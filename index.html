@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Roadmap Planner</h1>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="list">List</button>
+        <button class="nav-btn" data-view="timeline">Timeline</button>
+        <button class="btn btn-secondary" id="flag-risk-btn">Flag Risk Areas</button>
+        <button class="btn btn-secondary btn-icon" id="settings-btn" aria-label="Settings">⚙</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="toolbar">
+        <button class="btn btn-primary" id="add-project-btn">Add Project</button>
+      </div>
+
+      <div id="list-view" class="view active">
+        <div class="empty-state" id="list-empty-state">
+          <div class="empty-icon">📋</div>
+          <h2>No projects yet</h2>
+          <p>Add your first project to get started.</p>
+          <button class="btn btn-primary" id="add-first-project">Add Project</button>
+        </div>
+        <div class="list-container" id="list-container" style="display: none;">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Dependencies</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="projects-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="timeline-view" class="view">
+        <div class="empty-state" id="timeline-empty-state">
+          <div class="empty-icon">📅</div>
+          <h2>Nothing on the timeline</h2>
+          <p>Add projects with dates to see them here.</p>
+          <button class="btn btn-secondary" id="switch-to-list">View List</button>
+        </div>
+        <div class="timeline-container" id="timeline-container" style="display: none;">
+          <div class="timeline-scroll" id="timeline-scroll">
+            <div class="timeline-header" id="timeline-header"></div>
+            <div class="timeline-body" id="timeline-body"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="risk-modal-overlay">
+    <div class="modal modal-wide" id="risk-modal">
+      <div class="modal-header">
+        <h2>Risk Analysis</h2>
+        <button class="btn-icon" id="risk-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="risk-modal-body" id="risk-modal-body">
+        <div class="risk-loading" id="risk-loading">
+          <span>Analyzing roadmap...</span>
+        </div>
+        <div class="risk-content" id="risk-content" style="display: none;">
+          <div class="risk-empty" id="risk-empty">No risks identified.</div>
+          <div class="risk-cards" id="risk-cards"></div>
+        </div>
+        <div class="risk-error" id="risk-error" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="settings-modal-overlay">
+    <div class="modal" id="settings-modal">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="btn-icon" id="settings-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div style="padding: 0 20px 20px;">
+        <div class="form-group">
+          <label for="api-key">OpenAI API Key</label>
+          <input type="password" id="api-key" placeholder="sk-...">
+          <span class="form-hint">Stored locally. Required for Flag Risk Areas.</span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary" id="settings-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Project</h2>
+        <button class="btn-icon" id="modal-close" aria-label="Close">&times;</button>
+      </div>
+      <form id="project-form">
+        <input type="hidden" id="project-id">
+        <div class="form-group">
+          <label for="project-name">Name</label>
+          <input type="text" id="project-name" required placeholder="e.g. API Migration">
+        </div>
+        <div class="form-group">
+          <label for="project-owner">Owner</label>
+          <input type="text" id="project-owner" placeholder="e.g. Engineering Team">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="project-start">Start Date</label>
+            <input type="date" id="project-start" required>
+          </div>
+          <div class="form-group">
+            <label for="project-end">End Date</label>
+            <input type="date" id="project-end" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="project-deps">Depends On</label>
+          <select id="project-deps" multiple size="4">
+          </select>
+          <span class="form-hint">Hold Ctrl/Cmd to select multiple</span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
