@@ -4,4 +4,4 @@ A lightweight roadmap planning app with a single AI-powered feature that flags p
 ## Why This Exists
 Most AI demos try to replace user judgement.
 This project explores the opposite:
-Where can AI quietly support better decisions without disrupting UX?
+# Where can AI quietly support better decisions without disrupting UX?
