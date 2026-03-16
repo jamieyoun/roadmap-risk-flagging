@@ -8,6 +8,14 @@ Most AI demos try to replace user judgement. This project explores the opposite:
 
 **Where can AI quietly support better decisions without disrupting UX?**
 
+## Screenshots<img width="1170" height="671" alt="Screenshot 2026-03-16 at 11 36 17 AM" src="https://github.com/user-attachments/assets/a0c17c60-98c7-43d2-8e9f-6178933770fc" />
+
+<img width="1170" height="671" alt="Screenshot 2026-03-16 at 11 36 17 AM" src="https://github.com/user-attachments/assets/dfd8cfda-610f-4e30-87ff-0006d8b3201a" />
+
+<img width="1171" height="423" alt="Screenshot 2026-03-16 at 11 36 39 AM" src="https://github.com/user-attachments/assets/b09e7420-dd07-44b9-89dc-bd7f2101eade" />
+
+<img width="1143" height="783" alt="Screenshot 2026-03-16 at 11 37 15 AM" src="https://github.com/user-attachments/assets/e88b5196-fcbd-49c8-a43e-08a69cbe5f80" />
+
 ## Features
 
 - **CRUD projects** — Create, edit, and delete projects
